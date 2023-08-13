@@ -1,0 +1,683 @@
+// Q- print prime numbers between the intervals using function1
+// error
+/* #include<iostream>
+ #include<math.h>
+
+ using namespace std;
+void calculate_prime_no(int a,int b,int flag)
+ {
+     
+      for(int i=a;i<=b;i++)
+     {
+        if(i==1)
+        {
+            continue;
+        }
+        flag=0;
+        for(int j=2;j<=sqrt(i);j++)
+        {
+             if(i%j == 0)
+             {
+                 flag=1;
+                 break;
+             }
+         }
+         if(flag =0)
+         {
+             cout<<i<<" ";
+         }
+
+      }
+ }
+ int main()
+ {
+     int a,b,flag=0;
+     cout<<"enter the nubers: ";
+     cin>>a>>b;
+     calculate_prime_no(a,b,flag);
+     return 0;
+ }*/ 
+//TIME COMPLEXITY.
+
+/*above coede For the outer loop, it iterates 'b - a + 1' times. Therefore, the time complexity contribution of the outer loop is O(b - a).
+
+For the inner loop, its iteration count depends on the current number 'i', which ranges from 'a' to 'b'. The maximum number of iterations for the inner loop is sqrt(b). Therefore, the overall time complexity contribution of the inner loop is O(sqrt(b)).
+
+Since the outer loop and inner loop are nested, we multiply their time complexities to get the overall time complexity of the code:
+
+Time complexity = O(b - a) * O(sqrt(b)) = O((b - a) * sqrt(b))*/
+// 2) methode
+
+// #include<iostream>
+// #include<math.h>
+// using namespace std;
+// bool isPrime(int n)
+// {
+//      for(int j=2;j<=sqrt(n);j++)
+//      {
+//          if(n%j == 0)
+//          {
+//             return false;/*will come out of the function no need to write the break statementn*/
+//          }
+        
+//      }
+//      return true;
+// }
+// int main()
+// {
+//     int a,b;
+//     cout<<"Enter the interval: ";
+//     cin>>a>>b;
+//     for(int i=a;i<=b;i++)
+//     {
+//         if(i==1 || i==0)
+//         {
+//             continue;
+//         }
+//         if(isPrime(i))
+//         {
+//             cout<<i<<" ";
+//         }
+        
+//     }
+//     return 0;
+// }
+
+
+// 2) fibonacii series
+
+// next term will be the sum of first two previos term
+
+// #include<iostream>
+// using namespace  std;
+// void fibb(int n)
+// {
+//     int t1=0;
+//     int t2=1;
+//     for(int i=0;i<n;i++)
+//     {
+//         cout<<t1<<" ";
+//         int nextnum=t2+t1;
+//         t1=t2;
+//         t2=nextnum;
+//     }
+// }
+// int main()
+// {
+//     int n;
+//     cout<<"enter the number: ";
+//     cin>>n;
+//     fibb(n);
+//     return 0;
+// }
+
+//TIME COMPLEXITY: O(n);
+
+// 3)factorials
+// #include<iostream>
+// using namespace std;
+// int fact(int n)
+// {
+//     int mul=1;
+//     for(int i=1;i<=n;i++)
+//     {
+//        mul =mul * i;
+       
+//     }
+//     return mul;
+// }
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the num: ";
+//     cin>>n;
+//     cout<<fact(n);
+//     return 0;
+// }
+
+// 4) binary coefficient ->nCr=n!/(n-r)!* r!
+
+// #include<iostream>
+// using namespace std;
+// int fact(int n)
+// {
+//     int mul=1;
+//     for(int i=1;i<=n;i++)
+//     {
+//         mul=mul * i;
+//     }
+//     return mul;
+// }
+// int main()
+// {
+//     int n,r;
+//     cout<<"Enter the number: ";
+//     cin>>n>>r;
+
+//     float ans=fact(n)/(fact(n-r)*fact(r));
+//     cout<<ans;
+//     return 0;
+// }
+
+//TIME COMPLEXITY:  O(n).
+
+
+// 5)pascal triangle.
+
+/*#include<iostream>
+ using namespace std;
+int fact(int n)
+ {
+     int mul=1;
+     for(int i=1;i<=n;i++)
+     {
+         mul=mul * i;
+     }
+     return mul;
+ }
+ int main()
+ {
+     int rows,col;
+     cout<<"Enter the rows and colum: ";
+     cin>>rows>>col;
+     for(int i=0;i<rows;i++)
+     {
+         int store;
+         for(int j=0;j<=i;j++)
+         {
+              store=fact(i)/(fact(j)*fact(i-j));
+              cout<<store<<" ";
+         }
+         cout<<"\n";
+     }
+     return 0;
+}*/
+
+//TIME COMPLEXITY.
+
+/*For each row 'i', we compute 'i' binomial coefficients using the fact function. Since the computation of each binomial coefficient takes O(i) time (based on the time complexity analysis of the previous question), and there are 'i' elements in each row, the overall time complexity for generating each row is O(i^2).
+
+Now, the loop in the main function iterates 'rows' times to generate 'rows' rows of Pascal's triangle. So, the total time complexity for generating the entire Pascal's triangle is the sum of the time complexities of generating each row:
+
+Time complexity = O(1^2 + 2^2 + 3^2 + ... + rows^2) = O(1 + 4 + 9 + ... + rows^2)
+
+The sum of the first 'n' perfect squares (1^2 + 2^2 + 3^2 + ... + n^2) is given by the formula (n * (n + 1) * (2n + 1)) / 6. Therefore, the time complexity for generating Pascal's triangle is:
+
+Time complexity = O((rows * (rows + 1) * (2 * rows + 1)) / 6) = O(rows^3)*/
+
+// kshipra question.' 
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int x=5;
+//     int cal;
+//     int y=12;
+//     for(int i=1;i<=12;i++)
+//     {
+//         cal=y/x;
+//         if(x*cal < y)
+//         {
+//             cout<<cal;
+//         }
+//         else{
+//             cout<<cal -1;
+//         }
+       
+//     }
+//     cout<<"min months: "<<cal-1;
+//     return 0;
+// }
+
+// advanced questions:
+
+// Q1-sum of first n natural numbers?
+
+
+// #include<iostream>
+// using namespace std;
+// int sum(int n)
+// {
+//     int store=0;
+//     for(int i=1;i<=n;i++)
+//     {
+//         store=store+i;
+//     }
+//     return store;
+// }
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the natural number: ";
+//     cin>>n;
+//     cout<<sum(n);
+//     return 0;
+
+// TIME COMPLEXITY FOR ABOVE CODE IS: O(n).
+
+
+// formula: n(n+1)/2;
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the natural number: ";
+//     cin>>n;
+//     int store= n*(n+1)/2;
+//     cout<<store;
+//     return 0;
+// }
+//TIME COMPLEXITY.:  O(1).
+
+// Q2) check if atriplet is a pythogoras triplet or not?
+/*the integer solutions to the Pythagorean Theorem, a2 + b2 = c2 are called Pythagorean Triples which contains three positive integers a, b, and c.
+
+Example: (3, 4, 5)
+
+By evaluating we get:
+
+32 + 42 = 52
+
+9+16 = 25
+
+Hence, 3,4 and 5 are the Pythagorean triples.
+*/ 
+// note if ans=0 means false and =1 then true;
+
+// #include<iostream>
+// #include<math.h>
+// using namespace std;
+// bool check_triplets(int a,int b,int c)
+// {
+   
+//      int x=max(a,max(b,c));
+//      int y,z;
+//      if(x == a)
+//      {
+//         y=b;
+//         z=c;
+//      }
+//      else if( x== b)
+//      {
+//         y=a;
+//         z=c;
+//      }
+//      else
+//      {
+//         y=a;
+//         z=b;
+//      }
+//      if(x*x == y*y +z*z)
+//      {
+//         return true;
+//      }
+//      else 
+//      {
+//         return false;
+//      }
+
+// }
+// int main()
+// {
+//     int a,b,c;
+//     cout<<"enter the value: ";
+//     cin>>a>>b>>c;
+//     if(check_triplets(a,b,c))
+//     {
+//         cout<<"Pythogoraus triplet.";
+//     }
+//     else{
+//         cout<<"Not apythorus triplet.";
+//     }
+
+//     return 0;
+// }
+
+/* according IEEE 754 there are two precision 
+1)single precision : floationg number which are represented as 
+31 (Sign bit)   30-23 (Exponent)   22-0 (Fraction)
+0               10000001           11100000000000000000000
+if the given number is excedding the limit of floating digit then it will give the approximate/nearest value of that number .
+and
+ 2) double precision:
+ 63 (Sign bit)   62-52 (Exponent)   51-0 (Fraction)
+0               10000001           11100000000000000000000
+Convert the biased exponent value "10000000011" to its decimal representation.
+Subtract the bias value (1023) from the decimal representation to obtain the actual exponent value. */
+
+
+// Q3) CONVERSIONS QUESTIONS .
+
+// octa to decimal number:
+
+
+/*#include<iostream>
+#include<math.h>
+using namespace std;
+
+int main()
+{
+    double octal=0605.12;
+    int whole=(int)(octal);
+    double fractional=octal -whole;
+    cout<<"\nfractoi: "<<fractional<<"\n";
+    
+    int b,whole_f;
+    int mul=0;
+    double mul_f=0;
+    float c;
+    for(int i=0;whole > 0;i++)
+    {
+        b=whole %10;
+        mul=mul + b * pow(8,i);
+        whole= whole/10;
+    }
+   cout<<"mul_final_wholw: "<<mul;
+    if(fractional > 0)
+    {
+        
+       // cout<<".";
+        int m=-1;
+        for(int i=0;i<2;i++)
+        {
+            c=fractional * 10;
+            cout<<"\nc: "<<c;
+            
+            whole_f=(int)c;
+            cout<<"\nwhole_f:"<<whole_f;
+            mul_f=mul_f + whole_f * pow(8,m);
+            cout<<"\nmul_f="<<mul_f;
+            m--;
+            
+            fractional=c-(float)whole_f;
+            cout<<"\nfractional c- whole_f"<<fractional;
+        }
+        cout<<"\nmul + mul_f: "<<mul + mul_f;
+    }
+    
+    
+    return 0;
+}
+error: purn value nahi print hot
+*/
+//NOT YET COMPLETED 
+ 
+//CONVERSIONS 
+//DECIMAL TO OCATL NUMBER / HEXADECIMAL NUMBER/ BINARY.
+//DECIMAL NO: WHICH HAS 2 THINGS:1) WHOLE PART 2) FRACTIONAL PART.
+
+/*#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    float decimal_no;
+    decimal_no = 1032.6875;
+    float a = decimal_no;
+    int whole = (int)a;
+    cout << "Whole: " << whole << endl;
+    float fractional_no = a - (float)whole;
+    cout << "Fractional part: " << fractional_no << endl;
+
+    int rem;
+    vector<int> arr;
+    int quotient;
+
+    // Convert whole number to octal
+    while (whole > 0)
+    {
+        quotient = whole / 8;
+        rem = whole % 8;
+        arr.push_back(rem);
+        whole = quotient;
+    }
+
+    // Print the octal representation of the whole number
+    cout << "Octal whole: ";
+    for (int j = arr.size() - 1; j >= 0; j--)
+    {
+        cout << arr[j];
+    }
+
+    // Convert fractional part to octal
+    if (fractional_no > 0)
+    {
+        cout << ".";
+        int maxFractionalDigits = 6; // Print up to 6 digits for the fractional part
+        for (int i = 0; i < maxFractionalDigits; i++)
+        {
+            fractional_no *= 8;
+            int digit = int(fractional_no);
+            cout << digit;
+            fractional_no -= digit;
+        }
+    }
+
+    return 0;
+}
+*/
+//TIME COMPLEXITY : O(log₁₀(whole)) (NOT SURE);(ABOVE CODE)
+// hexa decimal to decimal .
+
+//HANDELLING THE FRACTIONAL PART ALSO.
+/*#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+    string num="1B45.A6";
+    cout<<"num: "<<num<<"\n";
+    //find the position of the decimal point 
+    int decimalpos=num.find('.');
+    cout<<"decimal position:"<<decimalpos<<"\n";
+    string whole_partstr =num.substr(0,decimalpos);
+   cout<<"whole_partstr: "<<whole_partstr<<"\n";
+    
+    string decimal_partstr =num.substr(decimalpos + 1);
+    cout<<"decimal_partstr: "<<decimal_partstr<<"\n";
+  int wholePart = stoi(whole_partstr,nullptr,16);
+  cout<<"Whole part: "<<wholePart<<"\n";
+  double decimal_part = stod("0."+decimal_partstr);
+  cout<<"DEcimal part: "<<decimal_part<<"\n";
+    
+    return 0;
+} HERE THE ISSUE IS WITH THE DECIMAL VALUES*/
+
+// #include<iostream>
+// // #include<bits/std++.h> this contain all the header file required for calculation.
+// #include<math.h>
+// using namespace std;
+// int hexadecimal(string s)
+// {
+//     int store=0;
+//     int x=1;
+//     int n=s.size();
+//     // cout<<n;
+//     for(int i=n-1;i>=0;i--)
+//     {
+        
+//         if(s[i]>= '0' && s[i]<='9')
+//         {
+//             store=store + x*(s[i]-'0');
+
+//         }
+//         else if(s[i]>='A' && s[i] <='F')
+//         {
+//             store=store +x*(s[i] -'A' + 10);
+
+//         }
+//         x=x*16;
+//     }
+//     return store;
+// } 
+// int main()
+// {
+//   string s;
+//   cout<<"Enter the number: ";
+//   cin>>s;
+//   cout<<"decimal value: "<<hexadecimal(s);
+//     return 0;
+// }
+// Q-convert decimal to binary:
+// #include<iostream>
+// using namespace std;
+// void decimal_to_binary(int dec,int size)
+// {
+//     int arr[10];
+//     int rem;
+//     int qut=1,i=0;
+//     while(dec!=0)
+//     {
+//         rem=dec%2;
+
+//         arr[i]=rem;
+       
+//         i++;
+//         dec=dec/2;
+//     }
+//     for(int j=i-1;j>=0;j--)
+//     {
+//         cout<<arr[j];
+
+//     }
+// }
+// int main()
+// {
+//     int dec,size;
+//     cout<<"Enter the number: ";
+//     cin>>dec;
+    
+//     decimal_to_binary(dec,size);
+
+  
+    
+//     return 0;
+// }
+// Qdecimal to octa conversion.
+//// #include <locale>
+/*using namespace std;
+void dec_to_octa(double dec)
+{
+    int  pre_d = (int)dec;
+    float post_d = dec -(float) pre_d;
+    // cout<<pre_d<<"\n";
+    //cout<<post_d<<"\n";
+    int qut,i=0,j=0;
+    int rem;
+    int arr[20],post_ar[30];
+    char result[30];
+
+    while(pre_d !=0)
+    {
+        rem= pre_d % 8;
+        arr[i]=rem;
+        i++;
+        pre_d=pre_d/8;
+    }
+   cout<<"bimary representaion of integer part: "<<"\n";
+    while(i>0)
+    {
+        cout<<arr[i-1];
+        i--;
+    }
+    float  n=1;
+    float  post_n;
+    while(n != 3)
+     {
+
+          post_n=post_d * 8;
+         int post_real=(int)post_n;
+         post_ar[j]= post_real;
+         j++;
+         post_d=post_n -  post_real;
+         n++;
+        }
+        cout<<"\n"<<"binary representaion of fractinal part: "<<"\n";
+for(int l=0;l<3;l++)
+{
+    cout<<post_ar[l];
+}
+}
+
+  */    
+   
+
+/*int main()
+{
+    
+   double dec;
+    // cout<<"Enter the number: ";
+    // cin>>dec;
+    // cout<<dec<<"\n";
+    dec = 1032.6875;
+
+    dec_to_octa(dec);
+    return 0;
+}*/
+// #include<iostream>
+// using namespace std;
+
+// int func(int n)
+// {
+//     int x=1;
+//     int ans=0;
+//     while(x<=n)
+//     {
+//         x=x*2;
+        
+//     }
+//     x=x/2;
+    
+    
+
+//     while(x>0)
+//     {
+//         int ld = n/x;
+//         n= ld*x;
+//         x=x/2;
+//         ans=ans *10 + ld;
+//     }
+//     return ans;
+// }
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the number: ";
+//     cin>>n;
+/
+//     cout<<func(n);
+//     return 0;
+
+// }
+
+//find the cumulative sum of the enter number;
+/*#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+     int arr1[]={1,2,3,4,5,6};
+     int len=sizeof(arr1)/sizeof(arr1[0]);
+     //cout<<len;
+     int arr2[len];
+     arr2[-1]=0;
+     for(int i=0;i<len;i++)
+    {
+         arr2[i]=arr2[i-1] +arr1[i];
+         
+       }
+       for(int i=0;i<len;i++)
+    { 
+         cout<<arr2[i]<<" ";
+         
+       }
+    return 0;
+}
+*/
