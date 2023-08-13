@@ -1,0 +1,996 @@
+// #include<iostream>
+// using namespace std;
+// print.
+// ****
+// ****
+// ****
+// ****
+// ****
+
+// int main()
+// {
+//     int rows, cols;
+//     cout<<"Enter the number of rows";
+//     cin>>rows;
+//     cout<<"Enter the numbers of columns";
+//     cin>>cols;
+//     for(int i=0;i<rows;i++)
+//     {
+//         for(int i=0;i<cols;i++)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<endl;
+//     }
+//     return 0;
+// }
+
+// 2)
+// print
+// ****
+// *  *
+// *  *
+// *  *
+// ****
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int rows,cols;
+//     cout<<"Enter the number of rows:";
+//     cin>>rows;
+//     cout<<"Enter the number of cols:";
+//     cin>>cols;
+
+//     for(int i=1;i<=rows;i++)
+//     {
+//         for(int j=1;j<=cols;j++)
+//         {
+//            if(i==1 || i==rows || j==1 || j==cols)
+//            {
+//             cout<<"*";
+//            }
+//            else{
+//             cout<<" ";
+//            }
+
+//         }
+//         cout<<"\n";
+//     }
+
+
+//     return 0;
+// }
+
+// 3)print(right triangle star program)
+// *    
+// **   
+// ***  
+// **** 
+// *****
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the n: ";
+//     cin>>n;
+    
+//     for(int i=1;i<=5;i++ )
+//     {
+//         for(int j=1; j<=i;j++)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+    
+//      return 0;
+// }
+
+// 4)print(downward triangle star program)
+// *****
+// ****
+// ***
+// **
+// *
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the n: ";
+//     cin>>n;
+    
+
+//     for(int i=0;i<n;i++ )
+//     {
+//         for(int j=5; j>i;j--)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+    
+//      return 0;
+// }
+//
+
+//5)print (mirrored righttriangle star program)
+
+//     *
+//    **
+//   ***
+//  ****
+// *****
+
+//  #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cout<<"Enter n:";
+//     cin>>n;
+
+//     for(int i=1;i<=n;i++)
+//     {
+//         for(int j=1;j<=n;j++)
+//         {
+//             if(j<=(n-i))
+//             {
+//                 cout<<" ";
+
+//             }
+//             else
+//             {
+//                 cout<<"*";
+//             }
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+
+// 6)print
+// 1
+// 22
+// 333
+// 4444
+// 55555
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the value of n: ";
+//     cin>>n;
+//     for(int i=1;i<=n;i++)    /*here hence n =5 so our row will aso be 5 so loop will run from 1 to 5*/
+//     {
+//         for(int j=1;j<=i;j++)  /*here observed that no of cols in each row is equal to row number
+//                                 so it will run from j to j<i*/
+//         {
+//             cout<<i<<" ";    /*to print numbers ,numbers in each row is same as the row number.*/
+//         }
+//         cout<<"\n";
+//     }
+
+//     return 0;
+// }
+
+
+// 7)print flyods triangle(numbers are written in cosecutive manner)
+
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+// 11 12 13 14 15
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+
+// {
+//     int n,store=0;
+//     cout<<"Enter the value of n: ";  or wecan also make a variable by any name like count=1;
+                                        //    and simple increment it count++.
+                                           
+                                        
+//     cin>>n;
+//     for(int i=1;i<=n; i++)
+//     {
+//         for(int j=1;j<=i;j++)
+//         {
+//             store=store+1;
+//             cout<<store<<" ";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+
+// 8)print
+
+// *             *
+// * *         * *
+// * * *     * * *
+// * * * * * * * *
+// * * *     * * *
+// * *         * *
+// *             *
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int n,row_no=0;
+//     cout<<"Enter the value of n: ";
+//     cin>>n;
+//     for(int i=1;i<=n;i++)
+//     {
+//         row_no=i;
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<"*";
+//         }
+//         int space=2*n - 2*row_no;
+//         for(int i=1;i<=space;i++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+//     for(int i=n;i>=1;i--)
+//     {
+//         row_no=i;
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<"*";
+//         }
+//         int space=2*n - 2*row_no;
+//         for(int i=1;i<=space;i++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+
+
+//     return 0;
+// }
+// 9)print
+
+//     *
+//    **
+//   ***
+//  ****
+// *****
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     for(int i=0;i<5;i++)
+//   {
+//       for(int j=1;j<=5;j++)
+//       {
+//           if(j>=(5-i))
+//           {
+//               cout<<"*";
+//           }
+//           else
+//           {
+//               cout<<" ";
+//           }
+//       }
+//       cout<<"\n";
+//   }
+    
+   
+//     return 0;
+// }
+
+// 10 print 
+
+
+// *****
+//  ****
+//   ***
+//    **
+//     *
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  for(int i=0;i<5;i++)
+  {
+      for(int j=1;j<=5;j++)
+      {
+          if(j>i)
+          {
+              cout<<"*";
+          }else
+          {
+              cout<<" ";
+          }
+          
+      }
+      cout<<"\n";
+
+
+  }
+    return 0; 
+}
+
+// 11)print(pyramid program)
+
+//      *     
+//     * *    
+//    * * *   
+//   * * * *  
+//  * * * * * 
+
+
+#include<iostream>
+using namespace std;
+
+// int main()
+// {
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<=(5-i);j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(i+1);k++)
+//         {
+//             cout<<"* ";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+    
+// 12)print(diamond shap program)
+
+//      *     
+//     * *    
+//    * * *   
+//   * * * *  
+//  * * * * * 
+//  * * * * * 
+//   * * * *  
+//    * * *   
+//     * *    
+//      *    
+
+// int main()
+// {
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<=(5-i);j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(i+1);k++)
+//         {
+//             cout<<"* ";
+//         }
+//         cout<<"\n";
+//     }
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<=(i+1);j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(5-i);k++)
+//         {
+//             cout<<"* ";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+
+// 13)print(reverse pyramid star program)
+
+// * * * * * 
+//  * * * * 
+//   * * * 
+//    * * 
+//     * 
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<(i+1);j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(5-i);k++)
+//         {
+//             cout<<"* ";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+// 14)right pascal's triangle program
+
+// *
+// **
+// ***
+// ****
+// *****
+// ****
+// ***
+// **
+// *
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<=(i+1);j++)
+//         {
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+        
+//     }
+//     for(int i=0;i<5;i++)
+//     {
+        
+//             for(int j=1;j<=(5-i);j++)
+//             {
+//                 cout<<"*";
+//             }
+//             cout<<"\n";
+//         }
+
+//     return 0;
+// }
+
+// 15)print (left pascal' triangle)
+
+//     *
+//    **
+//   ***
+//  ****
+// *****
+//  ****
+//   ***
+//    **
+//     *
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+// for(int i=0;i<5;i++)
+//     {
+//     for(int j=1;j<=(5-i);j++)
+//     {
+//         cout<<" ";
+//     }
+//     for(int k=1;k<=i;k++)
+//     {
+//        cout<<"*";
+//     }
+//     cout<<"\n";
+//     }
+    
+//     for(int i=0;i<5;i++)
+//     {
+//     for(int j=1;j<=i;j++)
+//     {
+//         cout<<" ";
+//     }
+//     for(int k=1;k<=(5-i);k++)
+//     {
+//        cout<<"*";
+//     }
+//     cout<<"\n";
+//     }
+//     return 0;
+// }
+
+// 16)Sandglass star pyramid
+
+// * * * * * 
+//  * * * * 
+//   * * * 
+//    * * 
+//     * 
+//     * 
+//    * * 
+//   * * * 
+//  * * * * 
+// * * * * * 
+
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//      for(int i=0;i<5;i++)
+//      {
+//          for(int j=1;j<=i;j++)
+//          {
+//              cout<<" ";
+             
+//          }
+//          for(int k=1;k<=(5-i);k++)
+//          {
+//              cout<<"* ";
+//          }
+//          cout<<"\n";
+//      }
+//      for(int i=0;i<5;i++)
+//      {
+//          for(int j=1;j<=(5-i);j++)
+//          {
+//              cout<<" ";
+             
+//          }
+//          for(int k=1;k<=(i +1);k++)
+//          {
+//              cout<<"* ";
+//          }
+//          cout<<"\n";
+//      }
+
+// return 0;
+// }
+// 17) print(alphebet A)
+
+// ***
+// * *
+// ***
+// * *
+// * *
+// * *
+
+
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     for(int i=0;i<6;i++)
+//     {
+//         for(int j=1;j<=3;j++)
+//         {
+//             if(i==0 || i==2 ||j==1 || j==3)
+//             {
+//                 cout<<"*";
+//             }
+//             else
+//             {
+//                 cout<<" ";
+//             }
+//         }
+//         cout<<"\n";
+//     }
+   
+//     return 0;
+// }
+     
+
+// 18)print (hollow pyramid)
+
+//     *
+//    * *
+//   *   *
+//  *     *
+// *********
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int j;
+//     for(int i=1;i<=5;i++)
+//     {
+//         for(j=i;j<=5;j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(2*i-1);k++)
+//         {
+           
+          
+//            if(k==1 || k==(2*i-1) || i == 5)
+//            {
+//               cout<<"*";
+//            }
+//            else
+//            {
+//             cout<<" ";
+//            }
+           
+//         }
+//         // cout<<"";
+//         cout<<"\n";
+          
+//         }
+        
+      
+    
+//     return 0;
+// }
+           
+// 19)hollow pyramid
+// *********
+//  *     *
+//   *   *
+//    * *
+//     *
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=0;i<5;i++)
+//     {
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=1;k<=(2*(5-i)-1);k++)
+//         {
+//              if(k==1 || k==(2*(5-i)-1) || i==0)
+//              {
+//                 cout<<"*";
+//              }
+//              else{
+//                 cout<<" ";
+//              }
+//         }
+       
+//         cout<<"\n";
+//     }
+    
+//     return 0;
+// }
+// 20)diamond star pattern
+//     *
+//    * *
+//   *   *
+//  *     *
+// *       *
+//  *     *
+//   *   *
+//    * *
+//     *
+// #include<iostream>
+// using namespace std;
+//  int main()
+//  {
+//      for(int i=1;i<=5;i++)
+//      {
+//          for(int j=1;j<=(5-i);j++)
+//          {
+//              cout<<" ";
+//          }
+//          for(int k=1;k<=((2*i)-1);k++)
+//          {
+//              if(k==1 || k==((2*i)-1))
+//              {
+//                  cout<<"*";
+//              }
+//              else
+//              {
+//                  cout<<" ";
+//              }
+//          }
+//          cout<<"\n";
+//      }
+//      for(int i=5;i>=0;i--)
+//      {
+//          for(int j=1;j<=(5-i);j++)
+//          {
+//              cout<<" ";
+//          }
+//          for(int k=1;k<=((2*i)-1);k++)
+//          {
+//              if(k==1 || k==((2*i)-1))
+//              {
+//                  cout<<"*";
+//              }
+//              else
+//              {
+//                  cout<<" ";
+//              }
+//          }
+//          cout<<"\n";
+//      }
+
+
+//      return 0;
+//  }
+
+
+// 21)simple number pattern.
+
+// 1
+// 12   
+// 123  
+// 1234 
+// 12345
+
+// #include <iostream>
+
+// using namespace std;
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//         for(int j=1;j<=i;j++)
+//         {
+//             cout<<(j+1)-1;
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+
+// 22)number pattern 
+// 1 
+// 2 3 
+// 4 5 6 
+// 7 8 9 10       
+// 11 12 13 14 15 
+// #include <iostream>
+
+// using namespace std;
+// int main()
+// {
+//     int sum=0;
+//     for(int i=1;i<=5;i++)
+//     {
+//         for(int j=1;j<=i;j++)
+//         {
+            
+//             cout<<++sum<<" ";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+// 23)pascal number pattern
+
+//        1 
+//       1 1 
+//      1 2 1 
+//     1 3 3 1
+//    1 4 6 4 1
+//   1 5 10 10 5 1
+//  1 6 15 20 15 6 1
+// 1 7 21 35 35 21 7 1
+
+
+// #include <iostream>
+
+// using namespace std;
+// int main()
+// {
+//     for(int i=0;i<8;i++)
+//     {
+//         int num=1;
+//         for(int j=0;j<(8-i)-1;j++)
+//         {
+//             cout<<" ";
+//         }
+//         for(int k=0;k<=i;k++)
+//         {
+//             cout<<num<<" ";
+//             num=num*(i-k)/(k+1); 
+
+//  }
+//         cout<<"\n";
+        
+//        }   
+//     return 0;
+// }
+// 24)number pattern question.
+
+// 1
+// 22   
+// 333  
+// 4444 
+// 55555
+
+// #include<iostream>
+// using namespace std;
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//        for(int j=1;j<=i;j++)
+//        {
+//            cout<<i;
+//        }
+//        cout<<"\n";
+// }
+//     return 0;
+// }
+
+// // 25) descending order  patten
+// 5
+// 54
+// 543
+// 5432
+// // 54321
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//         int sum=5;
+//         for(int j=1;j<=i;j++)
+//         {
+//           cout<<sum;
+//           sum=sum-1;
+
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+// 26)number pattern.
+// 1
+// 21
+// 321
+// 4321
+// 54321
+    
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//        int st=i;
+//         for(int j=1;j<=i;j++)
+//         {
+//           cout<<st; 
+//           st=st-1;
+//         }
+//         cout<<"\n";
+        
+//          }
+//     return 0;
+// }
+ 
+// 28)binary number pattern qustion.
+
+// 10101
+// 01010
+// 10101
+// 01010
+// 10101
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//         int sum=1;
+//         for(int j=1;j<=5;j++)
+//         {
+//             if(i==1 || i==3 || i==5)
+//             {
+//                 if(j%2 != 0)
+//                 {
+//                     cout<<"1";
+//                 }
+//                 else{
+//                     cout<<"0";
+//                 }
+//             }
+//             else{
+//                 if(j%2 != 0)
+//                 {
+//                     cout<<"0";
+//                 }
+//                 else{
+//                     cout<<"1";
+//                 }
+//             }
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+
+// }
+
+// // 29)Zeros and 1 pattern program
+// 1
+// 10
+// 101 
+// 1010
+// 10101
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//         for(int j=1;j<=i;j++)
+//         {
+//             if(j%2 !=0)
+//             {
+//                 cout<<"1";
+//             }
+//             else{
+//                 cout<<0;
+//             }
+
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+// 30)Alphabet questions.
+// A
+// AB 
+// ABC
+// ABCD
+// ABCDE
+
+// #include<iostream>
+// using namespace std;
+
+// int main()
+// {
+//     for(int i=1;i<=5;i++)
+//     {
+//         int sum=65;
+//         for(int j=1;j<=i;j++)
+//         {
+//              cout<<char(sum);
+//              sum=sum+1;
+//         }
+//         cout<<"\n";
+//     }
+    
+//     return 0;
+// }
+
