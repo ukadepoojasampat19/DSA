@@ -64,3 +64,96 @@ int main()
     }
     return 0;
 }
+
+//**Longest arithematic subarray**
+// An arithemstic subarray is an array that cintains at leasr two integers and the difference betweeb the consecutive integers are eqaul .eg[9,10],[3,3,3],[9,7,5,3]is a arithemetic array,while[1,3,3,7],[2,1,2] and [1,2,4] ar non arithematic array.
+
+// 3)Sarasvati has an array of N  non=-negative integers. The i-th integer of the array is A.She wants to choose a contigious arithemtic subarray from her array that has the maximun length .please help her to determine the length of the longest contigious arihematic subarray.
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout<<"enter the size of the array: ";
+    cin>>n;
+    int arr[n];
+    int arr1[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[n];
+        
+    }
+  
+     int ans=2;
+     int pd=arr[1]-arr[0];
+     int curr=2;
+     int j=2;
+     while(j<n)
+     {
+         if(pd == arr[j] - arr[j-1])
+         {
+             curr++;
+         }
+         else
+         {
+             pd=arr[j] - arr[j-1];
+             curr=2;
+         }
+         ans=max(ans,curr);
+         j++;
+        
+     }
+      cout<<ans<<"\n";
+    return 0;
+}
+
+/*4)record breaking day.
+
+isyana is given the number of visitors at her local park on N consecutive days.The
+number of visitor on the i-th day is Vi.A day is record breaking if it satisfies both of the following conditions:
+1)The number of visitors on the day is strictly larger than the number of visitors on each of the previous days.
+2)Either it is the last day ,or the  number of visitors on the day is strictly larger than the 
+number of visitors on the following day.
+Note that the very first day could be a record breaking day!
+please help isyana find out the number of record breaking days;*/
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    int n;
+    bool status=false;
+    cout<<"Enter the size of the array: ";
+    cin>>n;
+    int arr[n + 1];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int rec_break=0;
+    int mx=-1;
+    arr[n]=-1;
+    if( n == 1)
+    {
+        rec_break++;
+        return 0;
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i] > mx && arr[i] > arr[i+1])
+        {
+            rec_break++;
+        }
+        
+            mx=max(mx,arr[i]);
+        
+    }
+    
+    
+    cout<<"\nrec_break: "<<rec_break;
+    return 0;
+}
+
