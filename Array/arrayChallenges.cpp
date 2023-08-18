@@ -156,4 +156,247 @@ int main()
     cout<<"\nrec_break: "<<rec_break;
     return 0;
 }
+// 5 ) First repeating element in the array.
+/*Given an array arr[] of size N. The task is to find the first repeating element in the array of
+integers, i.e, an element that occurs more than once and whose index of first occurrence is smallest.
+Constraints: 1<=N=10^6
+            0<=Ai<=10^6*/
 
+//1st approch
+// |1|5|3|4|3|5|6| :Given array
+// |-1|-1|-1|-1|-1|-1|-1|
+// |-1 |0 |-1 |2 |3|1 |6 |
+
+#include "bits/stdc++.h"
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    int a[n];
+    for(int i=0; i<n;i++)
+    {
+        cin>>a[i];
+    }
+    const int N = 1e6+2;
+    int idx[N];
+    for(int i=0; i<N;i++)
+    {
+        idx[i] =-1;
+    }
+
+    int minidx = INT_MAX;
+    for(int i=0; i<n; i++)
+    {
+        if(idx[a[i]] != -1)
+        {
+            minidx = min(minidx, idx[a[i]]);
+        }
+        else{
+            idx[a[i]] = i;
+        }
+    }
+     if(minidx == INT_MAX)
+     {
+        cout<<"-1"<<endl;
+     }
+     else{
+        cout<< minidx + 1 <<endl;
+     }
+    return 0;
+}
+
+//2nd approach 
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout<<"Enter the size of the array: ";
+    cin>>n;
+    int arr[n],ans;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i] == arr[j])
+            {
+                ans=i;
+               break; 
+            }
+        }
+    }
+    cout<<ans<<"";
+    return 0;
+}
+//6) Subarray with Given Sum
+
+/*Given an unsorted array A of size N of non-negative integers,find a continuous subarry
+which adds to a given number S.
+Constraints:
+1<=N<=10^5.
+0<=Ai<=10^10.*/
+//BRUTE FORCE
+/*Find sum of all possible subarrays. if any of the sum equates to S, output he starting 
+and ending index of the subarray
+TIME COMPLEXITY: O(n^2)*/ 
+/*
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,num,total_sum,curr_count=0;
+    cout<<"the size of the arr : ";
+    cin>>n;
+    cout<<"\nEnter the number:";
+    cin>>num;
+    int arr[n];
+    cout<<"Enter the elements of the array: \n";
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int k,j;
+    total_sum = arr[0];
+    for(k=0;k>n;k++)
+    {
+        if(total_sum == num)
+        {
+            curr_count++;
+            cout<<curr_count<<" :no of subarray form\n";
+            cout<<"index no : "<<k<<" "<<j;
+            cout<<"\n";
+        }
+        for(j=1;j<n;j++)
+        {
+            total_sum = total_sum + arr[j];
+            while(total_sum > num)
+            {
+                j--;
+                total_sum = total_sum - arr[j];
+            }
+            if(total_sum ==  num)
+            {
+                curr_count++;
+                cout<<curr_count<<" :no of subarray form\n";
+                cout<<"index no :" <<k<<"and "<<j;
+                cout<<"\n";
+                break;
+            }
+           
+        }
+    }
+    return 0;
+}
+//2 pproach
+
+#include "bits/stdc++.h"
+using namespace std;
+
+int main()
+{
+    int n,s;
+    cin>>n >> s;
+
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int i=0, j=0, st=-1, ed=-1, sum=0;
+    while(j<n && sum+a[j] <= s)
+    {
+        sum+=  a[j];
+        j++;
+    }
+    if(sum == s)
+    {
+        cout<<i+1 <<" "<< j <<endl;
+        return 0;
+    }
+    while(j<n)
+    {
+        sum+=a[j];
+        while(sum > s)
+        {
+            sum-=a[i];
+            i++;
+        }
+        if(sum == s)
+        {
+            st = i+1;
+            en = j+1;
+            break;
+        }
+        j++;
+        
+    }
+    cout<<st << " "<< en;
+    return 0;
+}
+*/
+//7)Smallest positive missing number.
+/*You are given an array arr[] of N integers including 0.the task is to find the smallest
+positive number missing from the array*/
+/*
+Constraints:
+1 <=N <= 10^6;
+-10^6 <= Ai <=10^6;
+*/
+/*
+#include "bits/stdc++.h"
+using namespace std;
+
+int main()
+{
+    int n,h;
+    cout<<"Entre the size of the array: ";
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the element of the array: \n";
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    const int m= 1e6 + 2;
+    bool check[m];
+    for(int i=0;i<m;i++)
+    {
+        check[i]= false;
+    }
+    for(int k=0;k<n;k++)
+    {
+        if(arr[k] >= 0)
+        {
+            check[arr[k]] = true;
+        }
+    }
+    bool status = false;
+    int var=-1;
+    for(h=0;h<m;h++)
+    {
+        if(check[h] == false)
+        {
+            status=true;
+            var=h;
+            break;
+        }
+       
+    }
+    cout<<var;
+   
+    
+    
+    
+    return 0;
+}
+*/
