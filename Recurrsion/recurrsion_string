@@ -1,0 +1,210 @@
+//Reverse a string using recurrsion.
+/*
+#include<iostream>
+#include<string>
+using namespace std;
+
+void  reverse(string str)
+{
+    if(str.length() == 0)
+    {
+        return ;
+    }
+    string ros = str.substr(1);
+    reverse(ros);
+    cout<<str[0];
+}
+int main()
+{
+   reverse("navjeevan"); 
+    return 0;
+}
+//(symbol of pi replace pi with its value 3.14)
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+void replace_pi(string str)
+{
+    if(str.length() == 0)
+    {
+        return;
+    }
+    if(str[0] == 'p' && str[1] == 'i')
+    {
+        cout<<"3.14";
+        replace_pi(str.substr(2));
+    }
+    else
+    {
+        cout<<str[0];
+        replace_pi(str.substr(1));
+        
+    }
+   
+}
+
+int main()
+{
+    string str="pippxxppiixipi";
+    cout<<"Initial string : "<<str<<"\n";
+    cout<<"FinAL STRING: ";
+     replace_pi(str);
+    return 0;
+}
+*/
+//TOWER OF HANOI
+
+#include<iostream>
+using namespace std;
+
+void  towerOfHanoi(int n,char src,char des,char helper)
+{
+    if( n == 0)
+    {
+        return ;
+    }
+     towerOfHanoi(n-1,src,helper,des);
+     cout<<"Move from "<<src<<"to"<<des;
+     towerOfHanoi(n-1,helper,des,src);
+    
+}
+int main()
+{
+    towerOfHanoi(3,'A','C','B');
+    return 0;
+}
+//remove duplicate letters from strings .
+
+#include<iostream>
+#include<string>
+using namespace std;
+string find_duplicate_string(string str)
+{
+    if(str.length() == 0)
+    {
+        return "";
+    }
+    char ch=str[0];
+    string rem =find_duplicate_string(str.substr(1));
+    if(ch == rem[0])
+    {
+        return rem;
+    }
+    return ch+ rem;
+
+}
+int main()
+{
+    string str="aaabbbee";
+    cout<<find_duplicate_string(str);
+    return 0;
+}
+//move all x to the end of the string.
+
+#include<iostream>
+using namespace std;
+string str1,str2;
+string move_X(string str)
+{
+    if(str.length() == 0)
+    {
+        return "";
+    }
+    char ch=str[0];
+   string ans= move_X(str.substr(1));
+   
+    if(ch == 'x')
+    {
+        return ans+ch;
+    }
+    
+    return ch+ans;
+}
+int main()
+{
+    string str="axxbdxcefxhix";
+    cout<<move_X(str);
+    
+    return 0;
+}
+//generate all substring of string.
+#include<iostream>
+using namespace std;
+
+void sub_array(string s,string ans)
+{
+    if(s.length() == 0)
+    {
+        cout<<ans<<" ";
+        return;
+    }
+    char ch = s[0];
+    string ros = s.substr(1);
+    
+    
+    sub_array(ros,ans+ch);
+    sub_array(ros,ans);
+    
+    
+}
+int main()
+{
+    sub_array("ABC","");
+    
+    return 0;
+}
+//PRINT ALL POSSIBLE WORDS FROM PHONE DIGITS.
+
+\#include<iostream>
+using namespace std;
+string arr[]= {" "," ","abc","def","ghi","jkl","mno","Pqr","stu"};
+void keyboard(string s,string ans)
+{
+    if(s.length() == 0)
+    {
+        cout<<ans<<" ";
+        return ;
+    }
+    char ch = s[0];
+    string code = srr[ch -'0'];
+    string ros = s.substr(1);
+    
+    for(int i=0;i<code.length;i++)
+    {
+        keyboard(ros,ans + code[i]);
+        
+    }
+}
+int main()
+{
+    keyboard("23"," ");
+    return 0;
+#include<iostream>
+#include<string>
+using namespace std;
+string arr[]= {" "," ","abc","def","ghi","jkl","mno","Pqr","stu"};
+void keyboard(string s,string ans)
+{
+    if(s.length() == 0)
+    {
+        cout<<ans<<" ";
+        return ;
+    }
+    char ch = s[0];
+    string code = arr[ch -'0'];
+    string ros = s.substr(1);
+    
+    for(int i=0;i<code.length();i++)
+    {
+        keyboard(ros,ans + code[i]);
+        
+    }
+}
+int main()
+{
+    keyboard("23"," ");
+    return 0;
+}
