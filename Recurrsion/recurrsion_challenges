@@ -1,0 +1,221 @@
+//print sum till end of n;
+
+#include<iostream>
+using namespace std;
+
+int  sum_till_n(int n)
+{
+    int sum=n + sum_till_n(n - 1);
+    return sum;
+}
+int main()
+{
+    cout<<sum_till_n(5);
+    return 0;
+}
+//calculate n raised to power p(2^3)
+
+#include<iostream>
+using namespace std;
+
+int cal_pow(int n,int p)
+{
+    if(p==0)
+    {
+        return 1;
+    }
+    int prev_num = cal_pow(n,p-1);
+    return n* prev_num;
+}
+int main()
+{
+    int n,p;
+    cout<<"enter the n power p value: ";
+    cin>>n>>p;
+    cout<<cal_pow(n,p);
+    return 0;
+}
+//find the factorial of a number .
+
+#include<iostream>
+using namespace std;
+
+int  fact_num(int n)
+{
+    if(n == 1)
+    {
+        return 1;
+    }
+    int num=n * fact_num(n-1);
+    return num;
+}
+int main()
+{
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    fact_num(n);
+    return 0;
+}
+//print the nth  fibonacii number.
+#include<iostream>
+using namespace std;
+
+int fibonacii_num(int n)
+{
+    if( n==0 || n==1)
+    {
+        return n;
+    }
+    
+   return fibonacii_num(n-1) + fibonacii_num(n-2);
+
+
+}
+int main()
+{
+    int n;
+    cout<<"enter the number: ";
+    cin>>n;
+    cout<<fibonacii_num(n);
+    return 0;
+}
+
+//check if a array is sorted or not,.
+//still the following code is not clear.
+#include<iostream>
+using namespace std;
+#include<iostream>
+using namespace std;
+
+bool sorted_array(int arr[],int size)
+{
+    if( size == 1)
+    {
+        return 1;
+        
+    }
+     int rest_arr_ele=sorted_array(arr+1,size-1);
+     return (arr[0] < arr[1] &&  rest_arr_ele);
+    
+}
+int main()
+{
+    int arr[]={1,2,3,4,10,6};
+    int size=sizeof(arr)/sizeof(arr[0]);
+    cout<<sorted_array(arr,size);
+    return 0;
+}
+
+//print numbers till end 
+//1)increasing order.
+
+#include<iostream>
+using namespace std;
+
+int i;
+void inc_num(int n)
+{
+    if( n==1)
+    {
+        cout<<"1"<<" ";
+        return ;
+    }
+    
+    inc_num(n-1);
+    cout<<n<<" ";
+    return ;
+    
+    
+    
+}
+int main()
+{
+    int n;
+    cout<<"Enter the number: ";
+    cin>>n;
+    inc_num(n);
+    return 0;
+}
+//2)decreasing order.
+#include<iostream>
+using namespace std;
+
+void desc_num(int n)
+{
+    if(n == 0)
+    {
+        return;
+    }
+    cout<<n<<" ";
+    desc_num(n-1);
+    
+    
+}
+int main()
+{
+    int n;
+    cout<<"Enter the number: ";
+    cin>>n;
+    desc_num(n);
+    return 0;
+}
+//Have to find the first and last occurrence of number in an array.
+
+//last element.
+#include<iostream>
+using namespace std;
+
+int last_occ(int arr[],int size,int i,int key)
+{
+    if( i == size)
+    {
+        return -1;
+    }
+    int rest_value = last_occ(arr,size,i+1,key);
+    if(rest_value != -1)
+    {
+        return rest_value;
+    }
+    if(arr[i] == key)
+    {
+          return i;
+    }
+   
+     return -1;
+}
+
+int main()
+{
+    int arr[]={1,2,3,4,2,6};
+    int key =2;
+    int size=sizeof(arr)/sizeof(arr[0]);
+    cout<<last_occ(arr,size,0,key);
+    return 0;
+}
+//first element.
+
+#include<iostream>
+using namespace std;
+
+int first_occ(int arr[],int size,int i,int key)
+{
+    if(i ==size)
+    {
+        return -1;
+    }
+    if(arr[i] == key)
+    {
+        return i;
+    }
+    return first_occ(arr,size,i +1,key); 
+
+}
+int main()
+{
+    int arr[]={1,2,3,4,2,6};
+    int key =2;
+    int size=sizeof(arr)/sizeof(arr[0]);
+    cout<<first_occ(arr,size,0,key);
+    return 0;
+}
