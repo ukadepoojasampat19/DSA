@@ -1,0 +1,653 @@
+// find the permutation of the string .
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+void permutation(string s,string ans)
+{
+    if(s.length() == 0)
+    {
+        cout<<ans<<"\n";
+        return ;
+    }
+    
+    for(int i=0;i<s.length();i++)
+    {
+        char ch=s[i];
+        string ros = s.substr(0,i) + s.substr(i + 1);
+        permutation(ros,ans + ch);
+        
+    }
+    
+    
+}
+int main()
+{
+    permutation("ABC"," ");
+    return 0;
+}
+
+//count the number of path possible from start point to end point in a gameboard.
+#include<iostream>
+using namespace std;
+
+int  gameBoard(int s,int e)
+{
+    if(s == e)
+    {
+        return 1;
+    }
+    else if(s > e)
+    {
+        return 0;
+    }
+    int count = 0;
+    for(int i=1;i<=6;i++)
+    {
+        count+=gameBoard(s + i,e);
+    }
+    return count;
+}
+int main()
+{
+    cout<<gameBoard(0,3);
+    return 0;
+}
+/*count the  number of path possible in the maze .*/
+//condition: we can travel to right or down only.
+
+#include<iostream>
+using namespace std;
+
+int calculate_path(int n,int i,int j)
+{
+    if(i == n-1 && j==n-1)
+    {
+        return 1;
+    }
+    if( i >= n || j>= n)
+    {
+    return 0;
+    }
+    return calculate_path(n,i+1,j) + calculate_path(n,i,j+1);
+   
+}
+int main()
+{
+
+    cout<<calculate_path(3,0,0);
+    return 0;
+}
+
+//   *tiling problem*nf
+//Given a "2 * n" board and tiles of size "2*1",count the nuber of ways to tile the given board using these tiles .
+
+
+#include<iostream>
+using namespace std;
+
+int path(int n)
+{
+    if(n == 0)
+    {
+        return 0;
+    }
+    if( n == 1)
+    {
+        return 1;
+    }
+    return path(n -1) + path(n-2);
+}
+
+int main()
+{
+   cout<< path(4)<<"\n";
+    return 0;
+}
+//find the number of paring or single 
+//find the number of ways in which n friend can remain single or can be paired up.
+
+#include<iostream>
+using namespace std;
+int paths_paring(int n)
+{
+    if( n==0 || n==1 || n==2)
+    {
+        return n ;
+    }
+    return paths_paring(n -1) + paths_paring(n -2) * (n-1);
+}
+
+int main()
+{
+    cout<<paths_paring(4)<<"\n";
+    return 0;
+}
+//0/1 knapsack problem 
+
+/*#include<iostream>
+using namespace std;
+
+
+
+int main()
+{
+    int items;
+    float bag_w;
+    cout<<"enter the number of items: ";
+    cin>>items;
+    int weight[items];
+    int profit[items];
+    cout<<"enter the bag weight: ";
+    cin>>bag_w;
+    cout<<"Enter the weight of the items : ";
+    for(int i=0;i< items;i++)
+    {
+        cin>>weight[i];
+    }cout<<"\n";
+    cout<<"enter the profit of the items : ";
+    for(int i=0;i< items;i++)
+    {
+        cin>>profit[i];
+    }
+
+
+
+    return 0;
+}*/
+
+\
+#include<iostream>
+using namespace std;
+
+
+
+int main()
+{
+    int items,sum=0,pro_val=0;
+    float bag;
+    int k=0;
+    
+    cout<<"enter the number of items: ";
+    cin>>items;
+    int weight[items];
+    int profit[items];
+    float bag_weight[items];
+    
+    cout<<"enter the bag weight: ";
+    cin>>bag;
+    cout<<"Enter the weight of the items : ";
+    for(int i=0;i< items;i++)
+    {
+        cin>>weight[i];
+    }
+    cout<<"\n";
+    cout<<"enter the profit of the items : ";
+    for(int i=0;i<items;i++)
+    {
+        cin>>profit[i];
+    }
+    for(int j=0;j<items;j++)
+    {
+        if( weight[j] <= bag)
+        {
+            if( weight[j] == bag)
+            {
+                if(profit[j] >  pro_val)
+                {
+                    k=0;
+                    bag_weight[k]=weight[j];
+                    k++;
+                }
+            }
+            sum+=weight[j];
+            if(sum <=bag)
+            {
+                pro_val+=profit[j];
+            }
+        }
+        /*if(weight[i] == bag)
+        {
+                int max_p=profit[i];
+        }
+        else if(weight[i] < bag)
+        {
+            bag_weight[i] = weight[i];
+        }
+        else
+        {
+            continue;
+        }*/
+        cout<<"weight: ";
+        for(int i=0;i<k;k++)
+        {
+            cout<<bag_weight[k]<<"\n";
+        }
+        
+    }
+
+
+
+    return 0;
+}
+
+//0/1 knapsack problem 
+
+#include<iostream>
+using namespace std;
+
+int knapsack(int wt[], int profit[], int n , int W)
+{
+    if( n==0 || W ==0)
+    {
+        return 0;
+    }
+    if(wt[n-1] > W)
+    {
+        return knapsack(wt, profit, n-1, W);
+    } 
+    
+    return max(knapsack(wt ,profit, n-1, W  - wt[n-1]) + profit[n-1] , knapsack(wt, profit, n-1, W));
+    
+    
+}
+int main()
+{
+    int wt[] ={10,20,30};
+    int profit[]={60,100,120};
+    cout<<knapsack(wt, profit,3, 50 );
+    
+    return 0;
+}
+
+//0/1 knapsack using dynamic approach 
+#include<iostream>
+using namespace std;
+
+struct obj{
+    int weight;
+    int p;
+};
+struct obj t[4];
+
+void wt_sort(int n)
+{
+    struct obj temp; 
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if (t[i].weight > t[j].weight)
+            {
+                temp.weight = t[i].weight;
+                temp.p = t[i].p;
+                
+                t[i].weight = t[j].weight;
+                t[i].p = t[j].p;
+                
+                t[j].weight = temp.weight;
+                t[j].p = temp.p;
+            }
+        }
+    }
+    
+}
+void displayIP(int n)
+{
+    cout<<"\n"<<"User Input : "<<"\n";
+    cout<<"weight"<<"\t"<<"Profit";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n";
+        cout<<t[i].weight<<"\t"<<t[i].p;
+    }
+}
+void displaySorted(int n)
+{
+    cout<<"\n" <<"values after sorting of weights "<<"\n";
+    cout<<"weight"<<"\t"<<"Profits";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n";
+        cout<<t[i].weight<<"\t"<<t[i].p;
+    }
+}
+
+//2d array to calculate all possible combinations
+
+int calculate(int n,int wt,int x[])
+{
+    int v[n+1][wt + 1];
+    //i 
+    for(int i=0;i<=n;i++)
+    {
+        for(int w=0;w<=wt;w++)
+        {
+            if(i ==0 || w==0)
+            {
+                v[i][w]  =0;
+                cout<<v[i][w]<<"\t";
+            }
+            else
+            {
+                  int val = w -(t[i-1].weight);
+                    if(val < 0){
+                    v[i][w] = v[i-1][w];
+                    cout<<v[i][w]<<"\t";
+                   }
+                    else
+                    {
+                         int val1 = v[i-1][w];
+                         int val2 =(v[i-1][val] + t[i-1].p);
+                         v[i][w] = max(val1,val2);
+                         cout<<v[i][w]<<"\t";
+                    }
+            }
+        }
+        
+        cout<<"\n";
+    }
+    
+    int i=n,j=wt;
+    
+    while(i > 0 && j > 0)
+    {
+        if(v[i][j] != v[i-1][j])
+        {
+            x[1] = 1;
+            j = j-(t[i-1].weight);       // as the element is taken subtract its weigt from overall weight of bag
+            i=i-1;
+        }
+        else
+        {
+            i=i-1;
+        }
+    }
+    cout<<"\n";
+    for(int i=1;i<=n;i++)
+    {
+        cout<<x[i]<<"\t";
+    }
+    
+    return v[n][wt]; // return the maximum profit 
+}
+int main()
+{
+    int n=4;
+    int wt=8;
+    int x[10] ={0};
+    
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n"<<"Enter the weight of the element :"<<"\n";
+        cin>>t[i].weight;
+        cout<<"\n"<<"enter the profit for the element:"<<"\n";
+        cin>>t[i].p;
+        
+    }
+    cout<<"\n";
+    displayIP(n);
+    wt_sort(n);
+    cout<<"\n";
+    displaySorted(n);
+    cout<<"\n"<<"\n";
+    
+    int max_profit = calculate(n, wt, x);
+    cout<<"\n"<<"the maximaum profit that can be obtained is: "<<max_profit<<"\n";
+    
+    return 0;
+    
+    return 0;
+}
+
+//fractional knapsack using maximum profit methode
+#include<iostream>
+using namespace std;
+
+struct greedy_knapsack{
+    int obj;
+    int profit;
+    int weight;
+    int rem_weight;
+};
+struct greedy_knapsack arr[7];
+void  max_profit(int n,int total_wg)
+{
+    struct greedy_knapsack temp[7];
+  
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i].profit < arr[j].profit)
+            {
+                temp[i].obj =arr[i].obj;
+                temp[i].profit = arr[i].profit;
+                temp[i].weight = arr[i].weight;
+                
+                arr[i].obj=arr[j].obj;
+                arr[i].profit=arr[j].profit;
+                arr[i].weight=arr[j].weight;
+                
+                arr[j].obj=temp[i].obj;
+                arr[j].profit=temp[i].profit;
+                arr[j].weight=temp[i].weight;
+                
+            }
+        }
+    }
+    
+    cout<<"\n";
+    cout<<"descending order: \n";
+    cout<<"Object"<<"\t"<<"profit"<<"\t"<<"weight"<<"\n";
+    for(int i=0;i<7;i++)
+    {
+        cout<<arr[i].obj<<"\t"<<arr[i].profit<<"\t"<<arr[i].weight<<"\n";
+    }
+    //
+    int max_pr[4],val;
+    int i=0;
+    while( total_wg > 0)
+    {
+        
+        if(arr[i].weight < total_wg)
+        {
+            max_pr[i] = arr[i].profit;
+            total_wg=total_wg - arr[i].weight;
+            i++;
+        }
+        else
+        {
+            int diff=arr[i].weight - total_wg;
+            int sum = arr[i].weight - diff;
+            int new_profit = arr[i].profit * (sum /arr[i].weight);
+            max_pr[i]= new_profit;
+            i++;
+        }
+    }
+       for(int j=0;j<i;j++)
+       {
+           cout<<max_pr[j]<<"\t";
+       }
+        
+    cout<<"\n";
+}
+int main()
+{
+    int total_wg;
+    cout<<"Enter the total capacity of bag:";
+    cin>>total_wg;
+    for(int i=0;i<7;i++)
+    {
+        cout<<"Enter the obj:\n ";
+        cin>>arr[i].obj;
+        cout<<"Enter the profit:\n ";
+        cin>>arr[i].profit;
+        cout<<"Enter the weight:\n ";
+        cin>>arr[i].weight;
+    }
+    //output
+    /*cout<<"Object"<<"\t"<<"profit"<<"\t"<<"weight"<<"\n";
+    for(int i=0;i<7;i++)
+    {
+        cout<<arr[i].obj<<"\t"<<arr[i].profit<<"\t"<<arr[i].weight<<"\n";
+    }
+    
+    max_profit(7,total_wg);*/
+    float profit_wg[7];
+    for(int i=0;i<7;i++)
+    {
+        profit_wg[i] = arr[i].profit / arr[i].weight;
+    }
+    
+    
+   
+    return 0;
+}
+/*0/1 knapsack using dynamic programming.*/
+
+/*step 1: take the input number of objects
+2) weight 
+3)profit;
+4)total_weight;
+Sort the weight with their profit.
+now form the table .
+final profit*/
+
+#include<iostream>
+using namespace std;
+
+
+struct wt_pf{
+    int wt;
+    int pf;
+};
+struct wt_pf arr[4];
+
+void calculate_profit(int n,int total_weight)
+{
+    int v[n+1][total_weight+1];
+    for(int i=0;i<=n;i++)
+    {
+        for(int w=0;w<=total_weight;w++)
+        {
+            if(i == 0 || w ==0)
+            {
+                v[i][w]=0;
+                cout<<v[i][w]<<"\t";
+            }
+            else
+            {
+                int val = w- arr[i].wt;
+                if( val < 0)
+                {
+                     v[i][w]=0;
+                     cout<<v[i][w]<<"\t";
+                }
+                else
+                {
+                    int val1=v[i-1][w];
+                    int val2=arr[i].pf +v[i-1][val];
+                    int max_value = max(val1,val2);
+                    v[i][w]= max_value;
+                    cout<<v[i][w]<<"\t";
+                    
+                }
+                
+                
+            }
+        }
+        cout<<"\n";
+    }
+    
+    int i=n,m=total_weight,final_arr[4];
+    int k=0;
+    while( i> 0 && m > 0)
+    {
+        if(v[i][m] != v[i-1][m])
+        {
+            final_arr[k]=i;
+            k++;
+            m= m - arr[i-1].wt;
+            i=i-1;
+        }
+        else {
+            i=i-1;
+        }
+    }
+    //final output
+    cout<<"\n"<<"weight"<<"\t"<<"profit"<<"\n";
+    for(int j=0;j<n;j++)
+    {
+        cout<<arr[final_arr[j]].wt<<"\t"<<arr[final_arr[j]].pf<<"\n";
+    }
+}
+void unsorted(int n)
+{
+    cout<<"Weight"<<"\t"<<"profit"<<"\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i].wt<<"\t"<<arr[i].pf<<"\n";
+    }
+}
+
+void sorted(int n)
+{
+    cout<<"\n";
+    cout<<"Weight"<<"\t"<<"profit"<<"\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i].wt<<"\t"<<arr[i].pf<<"\n";
+    }
+}
+void  sort_weight(int n)
+{
+    struct wt_pf temp[4];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i].wt > arr[j].wt)
+            {
+                temp[i].wt=arr[i].wt;
+                temp[i].pf = arr[i].pf;
+                
+                arr[i].wt=arr[j].wt;
+                arr[i].pf=arr[j].pf;
+                
+                arr[j].wt = temp[i].wt;
+                arr[j].pf = temp[i].pf;
+                
+                
+                
+            }
+        }
+    }
+}
+
+
+int main()
+{
+    int total_weight,obj;
+    cout<<"Enter the total_weight: ";
+    cin>>total_weight;
+    cout<<"Enter the number of objects:\n";
+    cin>>obj;
+    for(int i=0;i<obj;i++)
+    {
+        cout<<"Enter the weight:\n";
+        cin>>arr[i].wt;
+        cout<<"Enter the profit:\n";
+        cin>>arr[i].pf;
+    }
+    //output
+   
+    unsorted(obj);
+    sort_weight(obj);
+    sorted(obj);
+    calculate_profit(obj,total_weight);
+    
+    return 0;
+}
