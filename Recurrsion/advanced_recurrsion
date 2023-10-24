@@ -651,3 +651,145 @@ int main()
     
     return 0;
 }
+//fractional knapsack using greedy approach 
+/*step1: weight.
+step2: profit.
+step3: profit by weight ratio find karnar .
+step 4:sort profit by weight ratio la .*/
+
+#include<iostream>
+using namespace std;
+
+struct wg_pf{
+    int wt;
+    int pf;
+    float p_w;
+};
+
+struct  wg_pf arr[4];
+
+void calculate_maxprofit(int total_weight,int  obj)
+{
+    int track[4];
+    for(int i=0;i<4;i++)
+    {
+        track[i]=0;
+    }
+    int sum_weight = 0;
+    int rem_weight = total_weight;
+    float net_profit = 0;
+   
+for (int i = 0; i < 4; i++) {
+    if (arr[i].wt < rem_weight && track[i] == 0) {
+        track[i] = 1;
+        rem_weight = rem_weight - arr[i].wt;
+        sum_weight = sum_weight + arr[i].wt;
+
+        cout << "Weight taken: " << arr[i].wt << "\n";
+        net_profit = net_profit + arr[i].pf;
+    } else {
+        // Calculate the fraction of the item to be taken
+        float fraction = rem_weight / arr[i].wt;
+        cout << "Weight taken: " << rem_weight << "\n";
+        rem_weight = 0;
+        sum_weight = total_weight;
+        net_profit = net_profit + (arr[i].pf * fraction);
+        break;
+    }
+}
+
+        
+        cout<<"\n net profit: ";
+        cout<<net_profit;
+    }
+    
+    
+
+void  sorted_wp(int n)
+{
+    cout<<"weight"<<"\t"<<"profit_by_weightratio\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i].wt<<"\t"<<arr[i].p_w<<"\n";
+    }
+    cout<<"\n";
+}
+void display_pw(int n)
+{
+    cout<<"weight"<<"\t"<<"profit by weight (unsorted )";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i].wt<<"\t"<<arr[i].p_w<<"\n";
+    }
+    cout<<"\n";
+}
+void display(int n)
+{
+    cout<<"weight"<<"\t"<<"profit\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i].wt<<"\t"<<arr[i].pf<<"\n";
+    }
+}
+void sort_arr(int n)
+{
+    struct wg_pf temp[4];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i].p_w < arr[j].p_w)
+            {
+                temp[i].p_w = arr[i].p_w;
+                temp[i].wt=arr[i].wt;
+                
+                
+                arr[i].p_w=arr[j].p_w;
+                arr[i].wt = arr[j].wt;
+                
+                arr[j].p_w=temp[i].p_w;
+                arr[j].wt=temp[i].wt;
+                
+                
+                
+            }
+        }
+    }
+}
+void pf_by_wt(int n)
+{
+   // float pw[4];
+    
+    for(int i=0;i<n;i++)
+    {
+        arr[i].p_w = arr[i].pf /(float) arr[i].wt;
+        
+        
+    }
+    display_pw(n);
+    cout<<"\n";
+    //sort the p by w ratio.
+    sort_arr(n);
+    sorted_wp(n);
+}
+int main()
+{
+    int obj,total_weight;
+    cout<<"Enter the total weight\n";
+    cin>>total_weight;
+    cout<<"Entre the number of objects: ";
+    cin>>obj;
+    for(int i=0;i<obj;i++)
+    {
+        cout<<"Enter weight:\n";
+        cin>>arr[i].wt;
+        cout<<"Enter profit:\n ";
+        cin>>arr[i].pf;
+    }
+    display(obj);
+    pf_by_wt(obj);
+    calculate_maxprofit(total_weight, obj);
+    
+    
+    return 0;
+}
